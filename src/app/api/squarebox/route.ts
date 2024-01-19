@@ -5,8 +5,8 @@ const prisma = new PrismaClient();
 
 export const GET = async (req: Request, res: NextResponse) => {
   try {
-    const squarebox = await prisma.squarebox.findMany();
-    return NextResponse.json({ message: "Success", squarebox }, { status: 200 });
+    const squareboxes = await prisma.squarebox.findMany();
+    return NextResponse.json({ message: "Success", squareboxes }, { status: 200 });
   } catch (err) {
     return NextResponse.json({ message: "Error", err }, { status: 500 });
   } finally {

@@ -1,6 +1,18 @@
+import { SquareboxType } from '@/types';
 import Image from 'next/image'
+import Link from 'next/link';
 
-export default function Home() {
+async function fetchAllSquarebox() {
+  const res = await fetch(`${process.env.ROOT}/api/squarebox`, {
+    cache: "no-store",
+  });
+  const data = await res.json();
+  return data.squareboxes;
+}
+
+export default async function Home() {
+  const squareboxes = await fetchAllSquarebox();
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
@@ -37,6 +49,63 @@ export default function Home() {
           height={37}
           priority
         />
+      </div>
+
+
+
+      <div className="w-full flex flex-col justify-center items-center">
+        <div>
+          <div className="flex flex-row-reverse w-full mb-3">
+            <div>
+              <Link
+                href={"/squarebox/add"}
+                className="px-4 py-1 text-center rounded-md font-semibold bg-red-400 m-auto hover:bg-red-200"
+              >
+                Add
+              </Link>
+            </div>
+          </div>
+          <div>
+            <table className="table-fixed border-collapse border border-slate-400 bg-white text-center">
+              <thead>
+                <tr className="bg-blue-200">
+                  <th className='w-20 border border-slate-300'></th>
+                  <th className="w-20 border border-slate-300">ID</th>
+                  <th className="w-20 border border-slate-300">Top</th>
+                  <th className="w-20 border border-slate-300">Left</th>
+                  <th className="w-20 border border-slate-300">Width</th>
+                  <th className="w-20 border border-slate-300">Height</th>
+                  <th className="w-20 border border-slate-300">Border</th>
+                  <th className="w-32 border border-slate-300">BorderColor</th>
+                  <th className="w-40 border border-slate-300">BackgroundColor</th>
+                </tr>
+              </thead>
+              <tbody className=''>
+                {squareboxes.map((squarebox: SquareboxType) => (
+                  <tr key={squarebox.id}>
+                    <td className='border border-slate-300'>
+                      <Link
+                        href={`/squarebox/edit/${squarebox.id}`}
+                        className="px-4 py-1 text-center rounded-md text-sm font-semibold bg-blue-400 m-auto hover:bg-blue-200"
+                      >
+                        Edit
+                      </Link>
+                    </td>
+                    <td className="border border-slate-300">{squarebox.id}</td>
+                    <td className="border border-slate-300">{squarebox.top}</td>
+                    <td className="border border-slate-300">{squarebox.left}</td>
+                    <td className="border border-slate-300">{squarebox.width}</td>
+                    <td className="border border-slate-300">{squarebox.height}</td>
+                    <td className="border border-slate-300">{squarebox.border}</td>
+                    <td className="border border-slate-300">{squarebox.bordercolor}</td>
+                    <td className="border border-slate-300">{squarebox.backgroundcolor}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+
+          </div>
+        </div>
       </div>
 
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
