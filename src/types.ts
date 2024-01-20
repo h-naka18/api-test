@@ -1,10 +1,10 @@
 export type SquareboxType = {
   id: number;
-  top: number;
-  left: number;
-  width: number;
-  height: number;
-  border: number;
-  bordercolor: string;
-  backgroundcolor: string;
+  top: number | null;
+  left: number | null;
+  width: number | null;
+  height: number | null;
+  border: number | null;
+  bordercolor: string | null;
+  backgroundcolor: string | null;
 }

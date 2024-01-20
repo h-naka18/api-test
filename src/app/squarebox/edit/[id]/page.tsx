@@ -117,48 +117,69 @@ const EditSquarebox = ({ params }: { params: { id: number } }) => {
         <div className="flex flex-col justify-center items-center m-auto">
           <p className="text-2xl text-slate-700 font-bold p-3">Edit Squarebox 🔥</p>
           <form>
-            <input
-              ref={topRef}
-              placeholder="top"
-              type="number"
-              className="rounded-md px-4 w-full py-2 my-2"
-            />
-            <input
-              ref={leftRef}
-              placeholder="left"
-              type="number"
-              className="rounded-md px-4 w-full py-2 my-2"
-            />
-            <input
-              ref={widthRef}
-              placeholder="width"
-              type="number"
-              className="rounded-md px-4 w-full py-2 my-2"
-            />
-            <input
-              ref={heightRef}
-              placeholder="height"
-              type="number"
-              className="rounded-md px-4 w-full py-2 my-2"
-            />
-            <input
-              ref={borderRef}
-              placeholder="border"
-              type="number"
-              className="rounded-md px-4 w-full py-2 my-2"
-            />
-            <input
-              ref={bordercolorRef}
-              placeholder="bordercolor"
-              type="text"
-              className="rounded-md px-4 w-full py-2 my-2"
-            />
-            <input
-              ref={backgroundcolorRef}
-              placeholder="backgroundcolor"
-              type="text"
-              className="rounded-md px-4 w-full py-2 my-2"
-            />
+            <label>
+              top:
+              <input
+                ref={topRef}
+                placeholder="top"
+                type="number"
+                className="rounded-md px-4 w-full py-2 my-2"
+              />
+            </label>
+            <label>
+              left:
+              <input
+                ref={leftRef}
+                placeholder="left"
+                type="number"
+                className="rounded-md px-4 w-full py-2 my-2"
+              />
+            </label>
+            <label>
+              width:
+              <input
+                ref={widthRef}
+                placeholder="width"
+                type="number"
+                className="rounded-md px-4 w-full py-2 my-2"
+              />
+            </label>
+            <label>
+              height:
+              <input
+                ref={heightRef}
+                placeholder="height"
+                type="number"
+                className="rounded-md px-4 w-full py-2 my-2"
+              />
+            </label>
+            <label>
+              border:
+              <input
+                ref={borderRef}
+                placeholder="border"
+                type="number"
+                className="rounded-md px-4 w-full py-2 my-2"
+              />
+            </label>
+            <label>
+              bordercolor:
+              <input
+                ref={bordercolorRef}
+                placeholder="bordercolor"
+                type="text"
+                className="rounded-md px-4 w-full py-2 my-2"
+              />
+            </label>
+            <label>
+              backgroundcolor:
+              <input
+                ref={backgroundcolorRef}
+                placeholder="backgroundcolor"
+                type="text"
+                className="rounded-md px-4 w-full py-2 my-2"
+              />
+            </label>
             <div className="flex flex-row-reverse w-full">
               <div>
                 <button onClick={handleCancel} className="ml-2 font-semibold px-4 py-2 shadow-xl bg-yellow-400 rounded-lg m-auto hover:bg-yellow-200">

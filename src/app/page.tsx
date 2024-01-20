@@ -49,9 +49,25 @@ export default async function Home() {
           height={37}
           priority
         />
+        <p className='text-2xl'>　＋　</p>
+        <Image
+          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
+          src="https://prismalens.vercel.app/header/logo-dark.svg"
+          alt="prisma_logo"
+          width={180}
+          height={37}
+          priority
+        />
+        <p className='text-2xl'>　＋　</p>
+        <Image
+          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
+          src="/supabase-logo-wordmark--dark.png"
+          alt="supabase_logo"
+          width={180}
+          height={37}
+          priority
+        />
       </div>
-
-
 
       <div className="w-full flex flex-col justify-center items-center">
         <div>
