@@ -67,6 +67,15 @@ export default async function Home() {
           height={37}
           priority
         />
+        <p className='text-2xl'>　＋　</p>
+        <Image
+          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
+          src="/vercel.svg"
+          alt="Vercel Logo"
+      width={180}
+          height={37}
+          priority
+        />
       </div>
 
       <div className="w-full flex flex-col justify-center items-center">
