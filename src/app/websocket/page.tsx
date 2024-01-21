@@ -4,28 +4,34 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function WebSocketTest() {
-
   const [message, setMessage] = useState('');
   const [socket, setSocket] = useState<WebSocket | null>(null);
 
   useEffect(() => {
     console.log("WebSocket URL: " + `${process.env.WEBSOCKET_URL}` + '/websocket');
-    const ws = new WebSocket(`${process.env.WEBSOCKET_URL}` + '/websocket');
-    ws.onopen = () => {
-      console.log('Connected to server');
-    };
+    let ws: WebSocket;
 
-    ws.onmessage = (event) => {
-      let data = JSON.parse(event.data)
-      console.log(data.message);
-      setMessage(data.message);
-    };
+    const connect = () => {
+      ws = new WebSocket(`${process.env.WEBSOCKET_URL}` + '/websocket');
+      ws.onopen = () => {
+        console.log('Connected to server');
+      };
 
-    ws.onclose = () => {
-      console.log('Disconnected from server');
-    };
+      ws.onmessage = (event) => {
+        let data = JSON.parse(event.data)
+        console.log(data.message);
+        setMessage(data.message);
+      };
 
-    setSocket(ws);
+      ws.onclose = () => {
+        console.log('Disconnected from server');
+        setTimeout(() => {
+          connect();
+        }, 1000);
+      };
+      setSocket(ws);
+    }
+    connect();
 
     return () => {
       ws.close();
@@ -51,6 +57,18 @@ export default function WebSocketTest() {
         <hr className="w-80 h-1 mx-auto my-4 bg-gray-100 border-0 rounded dark:bg-gray-700"/>
         <div className="flex flex-col justify-center items-center mt-10">
           <h1>Websocket Sample</h1>
+          <br />
+          <p>入力した文字列をFastAPIに送信してその文字列をエコーバックしてくれます。</p>
+          <br />
+          <p>テストする際には、ローカルホストで試して下さい。</p>
+          <p>※VercelがWebSocketサービスを提供していないため</p>
+          <br />
+          <p>api-testプロジェクトに移動して以下コマンドを実行</p>
+          <p>$ npm run dev</p>
+          <br />
+          <p>fastapi-testプロジェクトに移動して以下コマンドを実行</p>
+          <p>$ python -m uvicorn main:app --reload</p>
+          <br />
           <input
             type="text"
             onChange={(event) => sendMessage(event.target.value)}
