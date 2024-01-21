@@ -11,19 +11,19 @@ export default function WebSocketTest() {
     console.log("WebSocket URL: " + `${process.env.WEBSOCKET_URL}` + '/websocket');
     let ws: WebSocket;
     let timer: NodeJS.Timeout;
-  
+
     const connect = () => {
       ws = new WebSocket(`${process.env.WEBSOCKET_URL}` + '/websocket');
       ws.onopen = () => {
         console.log('Connected to server');
       };
-  
+
       ws.onmessage = (event) => {
         let data = JSON.parse(event.data)
         console.log(data.message);
         setMessage(data.message);
       };
-  
+
       ws.onclose = () => {
         console.log('Disconnected from server');
         timer = setTimeout(() => {
@@ -33,7 +33,7 @@ export default function WebSocketTest() {
       setSocket(ws);
     }
     connect();
-  
+
     return () => {
       clearTimeout(timer);
       ws.close();
@@ -56,7 +56,7 @@ export default function WebSocketTest() {
             Go Back
           </Link>
         </div>
-        <hr className="w-80 h-1 mx-auto my-4 bg-gray-100 border-0 rounded dark:bg-gray-700"/>
+        <hr className="w-80 h-1 mx-auto my-4 bg-gray-100 border-0 rounded dark:bg-gray-700" />
         <div className="flex flex-col justify-center items-center mt-10">
           <h1>Websocket Sample</h1>
           <br />
