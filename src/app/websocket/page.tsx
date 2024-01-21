@@ -10,30 +10,32 @@ export default function WebSocketTest() {
   useEffect(() => {
     console.log("WebSocket URL: " + `${process.env.WEBSOCKET_URL}` + '/websocket');
     let ws: WebSocket;
-
+    let timer: NodeJS.Timeout;
+  
     const connect = () => {
       ws = new WebSocket(`${process.env.WEBSOCKET_URL}` + '/websocket');
       ws.onopen = () => {
         console.log('Connected to server');
       };
-
+  
       ws.onmessage = (event) => {
         let data = JSON.parse(event.data)
         console.log(data.message);
         setMessage(data.message);
       };
-
+  
       ws.onclose = () => {
         console.log('Disconnected from server');
-        setTimeout(() => {
+        timer = setTimeout(() => {
           connect();
         }, 1000);
       };
       setSocket(ws);
     }
     connect();
-
+  
     return () => {
+      clearTimeout(timer);
       ws.close();
     };
   }, []);
