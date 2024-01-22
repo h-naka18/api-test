@@ -46,7 +46,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
+      <div className="fixed left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
         <a
           className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
           href="https://nextjs.org/"
@@ -110,6 +110,22 @@ export default async function Home() {
             priority
           />
         </a>
+        <p className='text-2xl'>　＋　</p>
+        <a
+          className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
+          href="https://fastapi.tiangolo.com/ja/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
+            src="/logo-teal.png"
+            alt="FastAPI Logo"
+            width={180}
+            height={37}
+            priority
+          />
+        </a>
       </div>
 
       <div className="w-full flex flex-col justify-center items-center">
@@ -164,6 +180,27 @@ export default async function Home() {
             </table>
 
           </div>
+        </div>
+      </div>
+
+      <div>
+        <div className='flex'>
+          <p>クライアント側のソース：</p>
+          <Link
+            href={"https://github.com/h-naka18/api-test"}
+            target="_blank"
+          >
+            <p className='underline'>https://github.com/h-naka18/api-test</p>
+          </Link>
+        </div>
+        <div className='flex'>
+          <p>サーバ側のソース：</p>
+          <Link
+            href={"https://github.com/h-naka18/fastapi-test"}
+            target="_blank"
+          >
+            <p className='underline'>https://github.com/h-naka18/fastapi-test</p>
+          </Link>
         </div>
       </div>
 
